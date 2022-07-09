@@ -4,7 +4,7 @@ row.classList.add('row');
 const square = document.createElement('div');
 square.classList.add('square');
 
-console.log(row.contains)
+console.log(row.contains);
 
 
 for (let i=0; i<16; i++){
