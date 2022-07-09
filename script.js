@@ -6,11 +6,12 @@ square.classList.add('square');
 
 console.log(row.contains);
 
+let gridSize = 16;
 
-for (let i=0; i<16; i++){
-    let gridRow = row;
-    for (let j=0; j<16; j++){
-        gridRow.appendChild(square)
+for (let i=0; i<gridSize; i++){
+    let gridRow = row.cloneNode(true);
+    for (let j=0; j<gridSize; j++){
+        gridRow.appendChild(square.cloneNode(true))
     }
     container.appendChild(gridRow)
 }
