@@ -1,7 +1,29 @@
+.body {
+    text-align: center;
+}
+
 .square {
+    display:inline-block;
+    padding: 0;
+    margin: 0;
+
     box-sizing: border-box;
     height:30px;
     width:30px;
-    border: 1px solid black;
+    border: solid black;
+    border-width: 0px 1px 1px 0px;
     background-color:blue;
+}
+
+.row {
+    display:block;
+    height:30px;
+    width: 480px;
+    padding: 0;
+    margin: 0;
+    background-color: red;
+}
+
+.container {
+    margin: 0 auto;
 }
