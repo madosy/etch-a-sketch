@@ -37,11 +37,11 @@ grid.forEach((square) => square.addEventListener('mousedown', () => {
 }
 ));
 
-grid.forEach((square) => square.addEventListener('mouseup', () => {
-    console.log('stop!')
-    stopDrawing();
-}
-));
+// grid.forEach((square) => square.addEventListener('mouseup', () => {
+//     console.log('stop!')
+//     stopDrawing();
+// }
+// ));
 
 // grid.forEach(square => square.removeEventListener('mouseover'))
 
@@ -59,6 +59,11 @@ var stopDrawing = function() {
     grid.forEach((square) => square.removeEventListener('mouseover', changeColor))
 }
 
-// const body = document.querySelector('body');
+const body = document.querySelector('body');
+body.addEventListener('mouseup', () => {
+    console.log('stop!')
+    stopDrawing();
+}
+);
 // body.addEventListener('mouseover', (e) => console.log(e));
 // body.addEventListener('mouseup', (e) => console.log(e));
