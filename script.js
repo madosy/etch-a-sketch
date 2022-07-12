@@ -4,16 +4,16 @@ row.classList.add('row');
 const square = document.createElement('div');
 square.classList.add('square');
 
-let gridSize = 16;
-let containerWidth = 600;
+let gridSize = 64;
+let containerWidth = 900;
 let pixelSize = containerWidth/gridSize;
 
 
 
-// row.style.width = `${gridSize*pixelSize}px`;
-// row.style.height = `${pixelSize}px`;
-// square.style.width = `${pixelSize}px`
-// square.style.height = `${pixelSize}px`
+row.style.width = `${gridSize*pixelSize}px`;
+row.style.height = `${pixelSize}px`;
+square.style.width = `${pixelSize}px`
+square.style.height = `${pixelSize}px`
 
 for (let i=0; i<gridSize; i++){
     let gridRow = row.cloneNode(true);
@@ -59,6 +59,6 @@ var stopDrawing = function() {
     grid.forEach((square) => square.removeEventListener('mouseover', changeColor))
 }
 
-const body = document.querySelector('body');
-// body.addEventListener('mousedown', (e) => console.log(e));
+// const body = document.querySelector('body');
+// body.addEventListener('mouseover', (e) => console.log(e));
 // body.addEventListener('mouseup', (e) => console.log(e));
