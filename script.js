@@ -29,8 +29,17 @@ for (let i=0; i<gridSize; i++){
 const grid = document.querySelectorAll('.square');
 // grid.forEach(square => square.addEventListener('click',console.log(`Hi, I'm ${square.id}`)))
 
+let colorSelected = 'red'
+
 grid.forEach((square) => square.addEventListener('mousedown', () => {
+    square.style.backgroundColor = colorSelected; 
     startDrawing();
+}
+));
+
+grid.forEach((square) => square.addEventListener('mouseup', () => {
+    console.log('stop!')
+    stopDrawing();
 }
 ));
 
@@ -38,12 +47,16 @@ grid.forEach((square) => square.addEventListener('mousedown', () => {
 
 
 var startDrawing = function() {
-    console.log(grid);
-    grid.forEach((square) => square.addEventListener('mouseover', () => {
-        console.log(square.id);
-        square.style.backgroundColor = 'red';
-    }));
-    // grid.forEach((square) => square.addEventListener('mouseover',))
+    grid.forEach((square) => square.addEventListener('mouseover', changeColor));
+}
+
+var changeColor = function() {
+    console.log(this.id);
+    this.style.backgroundColor = colorSelected;
+}
+
+var stopDrawing = function() {
+    grid.forEach((square) => square.removeEventListener('mouseover', changeColor))
 }
 
 const body = document.querySelector('body');
