@@ -29,16 +29,21 @@ for (let i=0; i<gridSize; i++){
 const grid = document.querySelectorAll('.square');
 // grid.forEach(square => square.addEventListener('click',console.log(`Hi, I'm ${square.id}`)))
 
-grid.forEach((square) => square.addEventListener('mousedown', {
-    
-}))
+grid.forEach((square) => square.addEventListener('mousedown', () => {
+    startDrawing();
+}
+));
 
-grid.forEach((square) => square.addEventListener('mouseover', startDrawing));
+// grid.forEach(square => square.removeEventListener('mouseover'))
 
-function startDrawing() {
+
+var startDrawing = function() {
+    console.log(grid);
+    grid.forEach((square) => square.addEventListener('mouseover', () => {
+        console.log(square.id);
+        square.style.backgroundColor = 'red';
+    }));
     // grid.forEach((square) => square.addEventListener('mouseover',))
-    console.log(this.id)
-    this.style.backgroundColor = 'red';
 }
 
 const body = document.querySelector('body');
