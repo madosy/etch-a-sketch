@@ -8,15 +8,39 @@ let gridSize = 16;
 let containerWidth = 600;
 let pixelSize = containerWidth/gridSize;
 
-row.style.width = `${gridSize*pixelSize}px`;
-row.style.height = `${pixelSize}px`;
-square.style.width = `${pixelSize}px`
-square.style.height = `${pixelSize}px`
+
+
+// row.style.width = `${gridSize*pixelSize}px`;
+// row.style.height = `${pixelSize}px`;
+// square.style.width = `${pixelSize}px`
+// square.style.height = `${pixelSize}px`
 
 for (let i=0; i<gridSize; i++){
     let gridRow = row.cloneNode(true);
+    gridRow.setAttribute('id', `r${i}`)
     for (let j=0; j<gridSize; j++){
-        gridRow.appendChild(square.cloneNode(true))
+        let clonedSquare = square.cloneNode(true);
+        clonedSquare.setAttribute('id', `r${i}c${j}`);
+        gridRow.appendChild(clonedSquare);
     }
     container.appendChild(gridRow)
 }
+
+const grid = document.querySelectorAll('.square');
+// grid.forEach(square => square.addEventListener('click',console.log(`Hi, I'm ${square.id}`)))
+
+grid.forEach((square) => square.addEventListener('mousedown', {
+    
+}))
+
+grid.forEach((square) => square.addEventListener('mouseover', startDrawing));
+
+function startDrawing() {
+    // grid.forEach((square) => square.addEventListener('mouseover',))
+    console.log(this.id)
+    this.style.backgroundColor = 'red';
+}
+
+const body = document.querySelector('body');
+// body.addEventListener('mousedown', (e) => console.log(e));
+// body.addEventListener('mouseup', (e) => console.log(e));
