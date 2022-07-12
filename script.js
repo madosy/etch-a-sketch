@@ -8,8 +8,6 @@ let gridSize = 64;
 let containerWidth = 900;
 let pixelSize = containerWidth/gridSize;
 
-
-
 row.style.width = `${gridSize*pixelSize}px`;
 row.style.height = `${pixelSize}px`;
 square.style.width = `${pixelSize}px`
@@ -31,9 +29,11 @@ const grid = document.querySelectorAll('.square');
 
 let colorSelected = 'red'
 
-grid.forEach((square) => square.addEventListener('mousedown', () => {
-    square.style.backgroundColor = colorSelected; 
-    startDrawing();
+grid.forEach((square) => square.addEventListener('mousedown', (theEvent) => {
+    if (theEvent.buttons == 1) {
+        square.style.backgroundColor = colorSelected;
+        startDrawing();
+    }
 }
 ));
 
@@ -47,7 +47,7 @@ grid.forEach((square) => square.addEventListener('mousedown', () => {
 
 
 var startDrawing = function() {
-    grid.forEach((square) => square.addEventListener('mouseover', changeColor));
+        grid.forEach((square) => square.addEventListener('mouseover', changeColor));
 }
 
 var changeColor = function() {
@@ -67,3 +67,7 @@ body.addEventListener('mouseup', () => {
 );
 // body.addEventListener('mouseover', (e) => console.log(e));
 // body.addEventListener('mouseup', (e) => console.log(e));
+// body.addEventListener('mousedown', (myEvent) => {
+//     console.log(myEvent.buttons);
+//     console.log(myEvent.type);
+// });
