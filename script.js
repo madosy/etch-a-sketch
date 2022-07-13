@@ -5,7 +5,7 @@ const square = document.createElement('div');
 square.classList.add('square');
 
 let gridSize = 64;
-let containerWidth = 900;
+let containerWidth = 800;
 let pixelSize = containerWidth / gridSize;
 
 row.style.width = `${gridSize * pixelSize}px`;
@@ -15,10 +15,10 @@ square.style.height = `${pixelSize}px`
 
 for (let i = 0; i < gridSize; i++) {
     let gridRow = row.cloneNode(true);
-    gridRow.setAttribute('id', `r${i}`)
+    // gridRow.setAttribute('id', `r${i}`)
     for (let j = 0; j < gridSize; j++) {
         let clonedSquare = square.cloneNode(true);
-        clonedSquare.setAttribute('id', `r${i}c${j}`);
+        // clonedSquare.setAttribute('id', `r${i}c${j}`);
         gridRow.appendChild(clonedSquare);
     }
     container.appendChild(gridRow)
