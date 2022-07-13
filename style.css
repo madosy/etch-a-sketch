@@ -7,11 +7,12 @@
     width: fit-content;
     text-align: center;
     margin: auto;
+    margin-top: 50px;
 }
 #container {
     margin: 0 auto;
     position: absolute;
-    top: 105px;
+    top: 107px;
     left: 81px;
 }
 
@@ -32,11 +33,8 @@
     box-sizing: border-box;
     height:30px;
     width:30px;
-    border: solid black;
+    border: solid gray;
     border-width: 0px 1px 1px 0px;
-    background-color:blue;
+    background-color:white;
 }
 
-.square:hover {
-    background-color: black;
-}
