@@ -27,7 +27,7 @@ for (let i = 0; i < gridSize; i++) {
 const grid = document.querySelectorAll('.square');
 // grid.forEach(square => square.addEventListener('click',console.log(`Hi, I'm ${square.id}`)))
 
-let colorSelected = 'black'
+let colorSelected = '#8785A2'
 
 grid.forEach((square) => square.addEventListener('mousedown', (theEvent) => {
     if (theEvent.buttons == 1) {

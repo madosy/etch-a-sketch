@@ -1,5 +1,6 @@
-.body {
+body {
     text-align: center;
+    background-color: #FCD8D4;
 }
 
 #gamepad_container {
@@ -33,8 +34,11 @@
     box-sizing: border-box;
     height:30px;
     width:30px;
-    border: solid gray;
+    border: solid #efefef;
     border-width: 0px 1px 1px 0px;
-    background-color:white;
+    background-color: #efefef;
 }
 
+.noselect {
+    user-select: none;
+}
