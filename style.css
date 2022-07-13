@@ -1,6 +1,8 @@
 body {
     text-align: center;
     background-color: #FCD8D4;
+    background-image: url(./img/pencil.png);
+    background-blend-mode: soft-light;
 }
 
 #gamepad_container {
@@ -41,4 +43,10 @@ body {
 
 .noselect {
     user-select: none;
+}
+
+#credit {
+    position:absolute;
+    bottom: 0;
+    font-size: small;
 }
