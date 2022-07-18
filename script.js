@@ -1,24 +1,32 @@
+var root = document.querySelector(':root');
+
 const container = document.querySelector('#container');
 const row = document.createElement('div');
 row.classList.add('row');
 const square = document.createElement('div');
 square.classList.add('square');
 
-let gridSize = 64;
-let containerWidth = 800;
-let pixelSize = containerWidth / gridSize;
+// root.style.setProperty(--square-width,`${pixelSize}px`)
 
-row.style.width = `${gridSize * pixelSize}px`;
-row.style.height = `${pixelSize}px`;
-square.style.width = `${pixelSize}px`
-square.style.height = `${pixelSize}px`
+let gridSize = 64;
+let containerWidth = 500;
+let pixelSize = Math.floor(containerWidth / gridSize * 100) / 100;
+
+// row.style.width = `${gridSize * pixelSize}px`;
+
+// square.style.width = `${pixelSize}px`
+
+root.style.setProperty('--sqwidth',`${pixelSize}px`);
+root.style.setProperty('--sqheight',`${pixelSize}px`);
+root.style.setProperty('--row_width',`${pixelSize*gridSize}px`);
+// square.style.height = `${pixelSize}px`
 
 for (let i = 0; i < gridSize; i++) {
     let gridRow = row.cloneNode(true);
-    // gridRow.setAttribute('id', `r${i}`)
+    gridRow.setAttribute('id', `r${i}`)
     for (let j = 0; j < gridSize; j++) {
         let clonedSquare = square.cloneNode(true);
-        // clonedSquare.setAttribute('id', `r${i}c${j}`);
+        clonedSquare.setAttribute('id', `r${i}c${j}`);
         gridRow.appendChild(clonedSquare);
     }
     container.appendChild(gridRow)
@@ -31,8 +39,9 @@ let colorSelected = '#8785A2'
 
 grid.forEach((square) => square.addEventListener('mousedown', (theEvent) => {
     if (theEvent.buttons == 1) {
-        square.style.backgroundColor = colorSelected;
-        // startDrawing();
+        console.log("start!");
+        theEvent.target.style.backgroundColor = colorSelected;
+        startDrawing();
     }
 }));
 // ));
@@ -62,8 +71,11 @@ var stopDrawing = function () {
 const body = document.querySelector('body');
 body.addEventListener('mousedown', (theEvent) => {
     if (theEvent.buttons == 1) {
-        // console.log(square)
-        // square.style.backgroundColor = colorSelected;
+        console.log('body')
+        console.log(square)
+        console.log(colorSelected)
+        square.style.backgroundColor = colorSelected;
+        console.log(square)
         startDrawing();
     }
 });
