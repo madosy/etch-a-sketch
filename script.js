@@ -6,45 +6,59 @@ const square = document.createElement('div');
 square.classList.add('square');
 
 // User Input Color
-let colorSelector = document.getElementById("selected_color");
+let colorSelector = document.getElementById("color_picker");
 let colorSelectedOverlay = document.getElementById("selected_color_overlay");
+let colorSelected = colorSelector.value; //initial value
 
-colorSelector.addEventListener('click', () => {
+function activateRainbowDraw() {
+    rainbowMode = true;
+    setRandomColor();
+    colorSelectedOverlay.style.backgroundColor = colorSelected;
+}
+
+function disableRainbowDraw() {
     rainbowMode = false;
     rainbow_overlay.classList.remove("active");
-    colorSelected = colorSelector.value;
-})
-let colorSelected = colorSelector.value;
+}
+
 colorSelector.addEventListener("input", function () {
+    disableRainbowDraw();
     colorSelected = colorSelector.value;
     colorSelectedOverlay.style.backgroundColor = colorSelector.value;
 })
+colorSelector.addEventListener('click', () => {
+    disableRainbowDraw();
+})
+
 let rainbow_overlay = document.getElementById("rainbow_overlay");
 
 rainbow_overlay.addEventListener("click", function () {
     rainbow_overlay.classList.toggle("active");
     if (rainbow_overlay.classList.contains("active")) {
-        rainbowMode = true;
-        selectRandomColor();
+        activateRainbowDraw();
     } else {
-        rainbowMode = false;
-        // colorSelected = colorSelector.value;
+        disableRainbowDraw();
     }
 } )
 
 // Rainbow Mode
 let rainbowMode = false;
-let randomColor;
-let lightness = 90;
-function selectRandomColor() {
-    randomColor = getRandomInt(360);
-    colorSelected = `hsl(${randomColor},100%,${lightness}%)`
-    rainbow_overlay.style.backgroundColor = colorSelected;
-    if (lightness>0) lightness -= 1
+let randomColorInt;
+const getRandomInt = (max) => Math.floor(Math.random() * max)
+let lightness;
+let saturation;
+
+function setRainbowDefault() {
+    lightness = 90;
+    saturation = 100;
 }
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
+function setRandomColor() {
+    randomColorInt = getRandomInt(360);
+    colorSelected = `hsl(${randomColorInt},${saturation}%,${lightness}%)`
+    if (lightness>0) {
+        lightness -= 1;
+     } //gradually change to black;
 }
 
 // User Input Grid
@@ -87,7 +101,7 @@ function assembleGrid() {
             let clonedSquare = square.cloneNode(true);
             clonedSquare.style.backgroundColor = "#efefef"
             clonedSquare.addEventListener("mousedown", (e) => {
-                if (rainbowMode) selectRandomColor();
+                if (rainbowMode) setRandomColor();
                 e.target.style.backgroundColor = colorSelected;
                 startDrawing();
         })
@@ -125,13 +139,14 @@ var startDrawing = function () {
 }
 
 var changeColor = function () {
-    if (rainbowMode) selectRandomColor();
+    if (rainbowMode) setRandomColor();
     this.style.backgroundColor = colorSelected;
     colorSelectedOverlay.style.backgroundColor = colorSelected;
 }
 
 var stopDrawing = function () {
     grid.forEach((square) => square.removeEventListener('mouseover', changeColor))
+    setRainbowDefault();
 }
 
 const body = document.querySelector('body');
@@ -144,7 +159,6 @@ body.addEventListener('mousedown', (theEvent) => {
 
 body.addEventListener('mouseup', () => {
     stopDrawing();
-    lightness = 90;
 });
 
 let gamePad = document.getElementById("gamepad_container");
