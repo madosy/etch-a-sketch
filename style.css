@@ -100,8 +100,9 @@ input[type=color] {
 
 
 #grid_size_picker{
+    width:fit-content;
     position: absolute;
-    top: 560px;
+    top: 580px;
     margin-left: auto;
     margin-right: auto;
     left: 0;

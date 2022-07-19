@@ -24,6 +24,7 @@ let gridSize = gridResizer.value;
 gridResizer.addEventListener("input", function() {
     gridSize = gridResizer.value;
     resizeGridSquare();
+    updateGridValue()
 })
 
 // Resize Grid Squares
@@ -67,6 +68,12 @@ function assembleGrid() {
         container.appendChild(gridRow)
     }
 }
+
+function updateGridValue() {
+    let gridValue = document.getElementById("myRange_value");
+    gridValue.textContent = `${gridSize} x ${gridSize}`;
+}
+
 
 function removeGrid() {
     const gridForRemove = document.querySelectorAll('.row');
