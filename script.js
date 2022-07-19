@@ -8,15 +8,44 @@ square.classList.add('square');
 // User Input Color
 let colorSelector = document.getElementById("selected_color");
 let colorSelectedOverlay = document.getElementById("selected_color_overlay");
+
+colorSelector.addEventListener('click', () => {
+    rainbowMode = false;
+    rainbow_overlay.classList.remove("active");
+    colorSelected = colorSelector.value;
+})
 let colorSelected = colorSelector.value;
 colorSelector.addEventListener("input", function () {
     colorSelected = colorSelector.value;
     colorSelectedOverlay.style.backgroundColor = colorSelector.value;
 })
-let eraserOverlay = document.getElementById("eraser_overlay");
-eraserOverlay.addEventListener("click", function () {
-    // colorSelected = "#efefef";
+let rainbow_overlay = document.getElementById("rainbow_overlay");
+
+rainbow_overlay.addEventListener("click", function () {
+    rainbow_overlay.classList.toggle("active");
+    if (rainbow_overlay.classList.contains("active")) {
+        rainbowMode = true;
+        selectRandomColor();
+    } else {
+        rainbowMode = false;
+        // colorSelected = colorSelector.value;
+    }
 } )
+
+// Rainbow Mode
+let rainbowMode = false;
+let randomColor;
+let lightness = 90;
+function selectRandomColor() {
+    randomColor = getRandomInt(360);
+    colorSelected = `hsl(${randomColor},100%,${lightness}%)`
+    rainbow_overlay.style.backgroundColor = colorSelected;
+    if (lightness>0) lightness -= 1
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
 
 // User Input Grid
 let gridResizer = document.getElementById("myRange");
@@ -58,7 +87,7 @@ function assembleGrid() {
             let clonedSquare = square.cloneNode(true);
             clonedSquare.style.backgroundColor = "#efefef"
             clonedSquare.addEventListener("mousedown", (e) => {
-                console.log("start!");
+                if (rainbowMode) selectRandomColor();
                 e.target.style.backgroundColor = colorSelected;
                 startDrawing();
         })
@@ -83,7 +112,6 @@ function removeGrid() {
 var grid = document.querySelectorAll('.square');
 
 grid.forEach((square) => square.addEventListener('mousedown', (theEvent) => {
-        console.log("start!");
         theEvent.target.style.backgroundColor = colorSelected;
         startDrawing();
     
@@ -97,7 +125,9 @@ var startDrawing = function () {
 }
 
 var changeColor = function () {
+    if (rainbowMode) selectRandomColor();
     this.style.backgroundColor = colorSelected;
+    colorSelectedOverlay.style.backgroundColor = colorSelected;
 }
 
 var stopDrawing = function () {
@@ -107,16 +137,14 @@ var stopDrawing = function () {
 const body = document.querySelector('body');
 body.addEventListener('mousedown', (theEvent) => {
     if (theEvent.buttons == 1) {
-        console.log('body')
-        console.log(colorSelected)
         square.style.backgroundColor = colorSelected;
         startDrawing();
     }
 });
 
 body.addEventListener('mouseup', () => {
-    console.log('stop!')
     stopDrawing();
+    lightness = 90;
 });
 
 let gamePad = document.getElementById("gamepad_container");
@@ -127,7 +155,6 @@ shakeButton.addEventListener("click", function(){
     setTimeout(function() {
         gamePad.classList.remove("shake-hard");
         gamePad.classList.remove("shake-constant");
-        console.log('delay 1 s')
         // gamePad.removeClass("shake-constant");
     },300);
     removeGrid();
