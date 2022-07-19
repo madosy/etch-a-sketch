@@ -91,6 +91,9 @@ body {
     /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
+
+
+
 .slider {
     -webkit-appearance: none;
     width: 100%;
@@ -134,7 +137,8 @@ body {
     font-size: 14px;
     text-align: center;
     font-family: 'Edu VIC WA NT Beginner', cursive;
-    color: hsla(100, 100%, 100%, 50%);
+    opacity: 50%;
+    color: hsla(100, 100%, 100%, 100%);
     box-sizing: border-box;
     position: absolute;
     top: 562px;
@@ -145,24 +149,39 @@ body {
     /* background-color: blue; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
     background: conic-gradient(
-    hsl(360, 100%, 50%),
-    hsl(315, 100%, 50%),
-    hsl(270, 100%, 50%),
-    hsl(225, 100%, 50%),
-    hsl(180, 100%, 50%),
-    hsl(135, 100%, 50%),
-    hsl(90, 100%, 50%),
-    hsl(45, 100%, 50%),
-    hsl(0, 100%, 50%)
-  );
+        hsl(360, 100%, 50%),
+        hsl(315, 100%, 50%),
+        hsl(270, 100%, 50%),
+        hsl(225, 100%, 50%),
+        hsl(180, 100%, 50%),
+        hsl(135, 100%, 50%),
+        hsl(90, 100%, 50%),
+        hsl(45, 100%, 50%),
+        hsl(0, 100%, 50%)
+      );
   clip-path: circle(closest-side);
 }
 
+
+
+#rainbow_overlay:hover,
 #rainbow_overlay.active {
     /* border: 2px solid black; */
-    box-shadow: inset 2px 2px 1em black;
+    opacity: 100%;
+    box-shadow: inset 2px 2px 10px black;
     color: hsla(100, 100%, 100%, 100%);
-    transition: 0.3s;
+    transition: all 0.2s ease-in;
+    background: conic-gradient(
+        hsl(360, 100%, 50%),
+        hsl(315, 100%, 50%),
+        hsl(270, 100%, 50%),
+        hsl(225, 100%, 50%),
+        hsl(180, 100%, 50%),
+        hsl(135, 100%, 50%),
+        hsl(90, 100%, 50%),
+        hsl(45, 100%, 50%),
+        hsl(0, 100%, 50%)
+      );
 }
 
 
