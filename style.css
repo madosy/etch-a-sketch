@@ -13,8 +13,8 @@ body {
 
 #gamepad_container {
     position: relative;
-    width: 600px;
-    height: 600px;
+    width: 538px;
+    height: 670px;
     /* text-align: center; */
     margin: auto;
     margin-top: 50px;
@@ -26,8 +26,8 @@ body {
     margin: 0 auto;
     padding: 0px;
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 60px;
+    left: 45px;
 }
 
 .row {
@@ -48,7 +48,8 @@ body {
     box-sizing: border-box;
     height:var(--sqheight);
     width:var(--sqwidth);
-    border-width: 0px;
+    border: solid #efefef;
+    border-width: 0px 1px 1px 0px;
     background-color: #efefef;
 }
 
