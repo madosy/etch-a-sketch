@@ -5,7 +5,7 @@
 }
 
 body {
-    text-align: center;
+    /* text-align: center; */
     background-color: #FCD8D4;
     background-image: url(./img/pencil.png);
     background-blend-mode: soft-light;
@@ -13,33 +13,40 @@ body {
 
 #gamepad_container {
     position: relative;
-    width: fit-content;
-    text-align: center;
+    width: 600px;
+    height: 600px;
+    /* text-align: center; */
     margin: auto;
     margin-top: 50px;
+    background-image: url(./img/game-pad.png);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 #container {
     margin: 0 auto;
+    padding: 0px;
     position: absolute;
-    top: 62px;
-    left: 231px;
+    top: 0px;
+    left: 0px;
 }
 
 .row {
-    display:block;
-    height:var(--sqheight);
-    width:var(--row_width);
+    display: flex;
+    align-items:flex-start;
+    justify-content: flex-start;
+    border: 0px;
     /* width: 480px; */
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
+    height: var(--sqheight);
+    width: var(--row_width);
     /* background-color: red; */
 }
 
 .square {
     display:inline-block;
-    padding: 0;
-    margin: 0;
-
+    /* padding: 20px; */
+    margin: 0px;
     box-sizing: border-box;
     height:var(--sqheight);
     width:var(--sqwidth);
