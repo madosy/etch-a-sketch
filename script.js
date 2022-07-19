@@ -1,5 +1,5 @@
 // Create Grid Components
-const container = document.querySelector('#container');
+const container = document.querySelector('#grid_container');
 const row = document.createElement('div');
 row.classList.add('row');
 const square = document.createElement('div');
@@ -11,11 +11,11 @@ let gridSize = 64;
 
 // Resize Grid Squares
 let containerWidth = 480;
-let squareWidth = Math.floor(containerWidth / gridSize);
+let squareWidth = containerWidth / gridSize;
 let root = document.querySelector(':root');
 root.style.setProperty('--sqwidth',`${squareWidth}px`);
 root.style.setProperty('--sqheight',`${squareWidth}px`);
-root.style.setProperty('--row_width',`${containerWidth}px`);
+root.style.setProperty('--row_width',`${squareWidth*gridSize}px`);
 
 // Assemble Grid
 for (let i = 0; i < gridSize; i++) {

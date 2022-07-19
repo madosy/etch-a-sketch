@@ -13,7 +13,7 @@ body {
 
 #gamepad_container {
     position: relative;
-    width: 538px;
+    width: 577px;
     height: 670px;
     /* text-align: center; */
     margin: auto;
@@ -22,12 +22,12 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
 }
-#container {
+#grid_container {
     margin: 0 auto;
     padding: 0px;
     position: absolute;
-    top: 60px;
-    left: 45px;
+    top: 64px;
+    left: 49px;
 }
 
 .row {
