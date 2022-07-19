@@ -118,3 +118,18 @@ body.addEventListener('mouseup', () => {
     console.log('stop!')
     stopDrawing();
 });
+
+let gamePad = document.getElementById("gamepad_container");
+let shakeButton = document.getElementById("shakeButton");
+shakeButton.addEventListener("click", function(){
+    gamePad.classList.add("shake-hard");
+    gamePad.classList.add("shake-constant");
+    setTimeout(function() {
+        gamePad.classList.remove("shake-hard");
+        gamePad.classList.remove("shake-constant");
+        console.log('delay 1 s')
+        // gamePad.removeClass("shake-constant");
+    },300);
+    removeGrid();
+    assembleGrid();
+})

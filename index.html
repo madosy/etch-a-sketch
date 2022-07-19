@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-A-Sketch</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="cssshake.css">
     <script src="script.js" defer></script>
 </head>
 <BODY ondragstart="return false;" ondrop="return false;">
@@ -19,10 +20,11 @@
         <div id="eraser_overlay"></div>
         <div id="grid_size_picker">
             <p id="myRange_value">16 x 16</p>
-            <input type="range" min="16" max="64" value="16" step="16" class="slider" id="myRange">
+            <input type="range" min="16" max="96" value="16" step="16" class="slider" id="myRange">
         </div>
         <div id="credits"></div>
     </div>
+    <button id="shakeButton">Shake</button>
     
     <!-- <div id="credit">
         <a href="https://www.flaticon.com/free-icons/pencil" title="pencil icons">Pencil icons created by Freepik - Flaticon</a>
