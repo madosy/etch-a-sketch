@@ -1,4 +1,4 @@
-var root = document.querySelector(':root');
+let root = document.querySelector(':root');
 
 const container = document.querySelector('#container');
 const row = document.createElement('div');
@@ -6,15 +6,10 @@ row.classList.add('row');
 const square = document.createElement('div');
 square.classList.add('square');
 
-// root.style.setProperty(--square-width,`${pixelSize}px`)
-
 let gridSize = 64;
-let containerWidth = 500;
+let containerWidth = 501;
 let pixelSize = Math.floor(containerWidth / gridSize * 100) / 100;
 
-// row.style.width = `${gridSize * pixelSize}px`;
-
-// square.style.width = `${pixelSize}px`
 
 root.style.setProperty('--sqwidth',`${pixelSize}px`);
 root.style.setProperty('--sqheight',`${pixelSize}px`);

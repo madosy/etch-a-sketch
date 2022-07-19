@@ -44,7 +44,7 @@ body {
     height:var(--sqheight);
     width:var(--sqwidth);
     border: solid black;
-    border-width: 0px 1px 1px 0px;
+    border-width: 0px;
     background-color: #efefef;
 }
 
