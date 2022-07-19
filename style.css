@@ -62,3 +62,38 @@ body {
     bottom: 0;
     font-size: small;
 }
+
+#color_picker{
+    position: absolute;
+    top: 562px;
+    left: 45px;
+}
+
+#selected_color_overlay {
+    display: block;
+    width: 60px;
+    height: 60px;  
+    border-radius: 50%;
+    background-color: #8785A2;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+input[type=color] {
+    opacity: 0;
+    width: 60px;
+    height: 60px; 
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+#eraser_overlay {
+    display: block;
+    position: absolute;
+    top: 562px;
+    left: 471px;
+    width: 60px;
+    height: 60px;  
+    border-radius: 50%;
+    background-color: blue;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
