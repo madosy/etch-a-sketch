@@ -5,34 +5,77 @@ row.classList.add('row');
 const square = document.createElement('div');
 square.classList.add('square');
 
-// User Input Parameters
-let colorSelected = '#8785A2'
-let gridSize = 64;
+// User Input Color
+let colorSelector = document.getElementById("selected_color");
+let colorSelectedOverlay = document.getElementById("selected_color_overlay");
+let colorSelected = colorSelector.value;
+colorSelector.addEventListener("input", function () {
+    colorSelected = colorSelector.value;
+    colorSelectedOverlay.style.backgroundColor = colorSelector.value;
+})
+let eraserOverlay = document.getElementById("eraser_overlay");
+eraserOverlay.addEventListener("click", function () {
+    // colorSelected = "#efefef";
+} )
+
+// User Input Grid
+let gridResizer = document.getElementById("myRange");
+let gridSize = gridResizer.value;
+gridResizer.addEventListener("input", function() {
+    gridSize = gridResizer.value;
+    resizeGridSquare();
+})
 
 // Resize Grid Squares
 let containerWidth = 480;
+
+
 let squareWidth = containerWidth / gridSize;
 let root = document.querySelector(':root');
 root.style.setProperty('--sqwidth',`${squareWidth}px`);
 root.style.setProperty('--sqheight',`${squareWidth}px`);
 root.style.setProperty('--row_width',`${squareWidth*gridSize}px`);
 
-// Assemble Grid
-for (let i = 0; i < gridSize; i++) {
-    let gridRow = row.cloneNode(true);
-    gridRow.setAttribute('id', `r${i}`)
-    for (let j = 0; j < gridSize; j++) {
-        let clonedSquare = square.cloneNode(true);
-        clonedSquare.setAttribute('id', `r${i}c${j}`);
-        gridRow.appendChild(clonedSquare);
-    }
-    container.appendChild(gridRow)
+assembleGrid();
+
+function resizeGridSquare() {
+    let containerWidth = 480;
+    squareWidth = containerWidth / gridSize;
+    root.style.setProperty('--sqwidth',`${squareWidth}px`);
+    root.style.setProperty('--sqheight',`${squareWidth}px`);
+    root.style.setProperty('--row_width',`${squareWidth*gridSize}px`);
+    removeGrid();
+    assembleGrid();
 }
 
-const grid = document.querySelectorAll('.square');
+// Assemble Grid
+function assembleGrid() {
+    for (let i = 0; i < gridSize; i++) {
+        let gridRow = row.cloneNode(true);
+        // gridRow.setAttribute('id', `r${i}`)
+        for (let j = 0; j < gridSize; j++) {
+            let clonedSquare = square.cloneNode(true);
+            clonedSquare.style.backgroundColor = "#efefef"
+            clonedSquare.addEventListener("mousedown", (e) => {
+                console.log("start!");
+                e.target.style.backgroundColor = colorSelected;
+                startDrawing();
+        })
+            // clonedSquare.setAttribute('id', `r${i}c${j}`);
+            gridRow.appendChild(clonedSquare);
+        }
+        container.appendChild(gridRow)
+    }
+}
+
+function removeGrid() {
+    const gridForRemove = document.querySelectorAll('.row');
+    gridForRemove.forEach((square) => square.remove())
+}
+
+var grid = document.querySelectorAll('.square');
 
 grid.forEach((square) => square.addEventListener('mousedown', (theEvent) => {
-    
         console.log("start!");
         theEvent.target.style.backgroundColor = colorSelected;
         startDrawing();
@@ -42,6 +85,7 @@ grid.forEach((square) => square.addEventListener('mousedown', (theEvent) => {
 
 
 var startDrawing = function () {
+    grid = document.querySelectorAll('.square');
     grid.forEach((square) => square.addEventListener('mouseover', changeColor));
 }
 

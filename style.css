@@ -94,6 +94,21 @@ input[type=color] {
     width: 60px;
     height: 60px;  
     border-radius: 50%;
-    background-color: blue;
+    /* background-color: blue; */
     /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+
+#grid_size_picker{
+    position: absolute;
+    top: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+#myRange_value{
+    margin: 0px;
 }
